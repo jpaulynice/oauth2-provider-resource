@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.guerir.exception.AbstractBaseException;
 import com.guerir.model.Message;
-import com.zikko.auth.model.exception.AbstractBaseException;
 
 @Component
 @Provider
