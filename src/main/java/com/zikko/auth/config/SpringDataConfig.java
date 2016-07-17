@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableJpaAuditing
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.zikko.auth.repository", "com.guerir.repository" })
+@EnableJpaRepositories(basePackages = { "com.zikko.auth.repository" })
 public class SpringDataConfig {
 
     @Bean
@@ -31,7 +31,7 @@ public class SpringDataConfig {
         final LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(adapter);
         factory.setJpaProperties(hibernateProperties());
-        factory.setPackagesToScan("com.zikko.auth.repository.entity", "com.guerir.repository.entity");
+        factory.setPackagesToScan("com.zikko.auth.repository.entity");
         factory.setDataSource((DataSource) jndiDataSource().getObject());
         factory.afterPropertiesSet();
 

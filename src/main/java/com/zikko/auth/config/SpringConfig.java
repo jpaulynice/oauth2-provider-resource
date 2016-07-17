@@ -13,7 +13,7 @@ import org.springframework.data.domain.AuditorAware;
 import com.zikko.auth.service.impl.AuditorServiceImpl;
 
 @Configuration
-@ComponentScan(basePackages = { "com.zikko.auth.*", "com.guerir.*" },
+@ComponentScan(basePackages = { "com.zikko.auth.*" },
         excludeFilters = { @Filter(type = FilterType.REGEX, pattern = "com.zikko.auth.config.*") })
 @Import({ SpringDataConfig.class, SpringOauth2Config.class, SpringSecurityConfig.class })
 @PropertySource("classpath:dev.properties")
