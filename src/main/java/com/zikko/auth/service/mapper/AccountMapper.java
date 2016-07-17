@@ -2,8 +2,8 @@ package com.zikko.auth.service.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.guerir.model.Account;
-import com.guerir.repository.entity.AccountEntity;
+import com.zikko.auth.model.Account;
+import com.zikko.auth.repository.entity.AccountEntity;
 
 /**
  * @author Jay Paulynice (jay.paulynice@gmail.com)

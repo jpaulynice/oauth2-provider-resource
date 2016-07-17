@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.guerir.model.Account;
-import com.guerir.repository.AccountRepository;
-import com.guerir.repository.entity.AccountEntity;
+import com.zikko.auth.model.Account;
+import com.zikko.auth.repository.AccountRepository;
+import com.zikko.auth.repository.entity.AccountEntity;
 import com.zikko.auth.service.AccountService;
 
 @Service

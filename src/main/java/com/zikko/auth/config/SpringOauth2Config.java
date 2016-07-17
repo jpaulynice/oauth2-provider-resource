@@ -19,6 +19,8 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @Configuration
 @EnableAuthorizationServer
 public class SpringOauth2Config extends AuthorizationServerConfigurerAdapter {
+    private static final String USER_ROLE = "hasRole('ROLE_USER')";
+
     @Autowired
     private JndiObjectFactoryBean factory;
 
@@ -52,5 +54,6 @@ public class SpringOauth2Config extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.allowFormAuthenticationForClients();
+        oauthServer.checkTokenAccess(USER_ROLE);
     }
 }

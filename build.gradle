@@ -8,8 +8,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.guerir:guerir-model:1.0'
-    compile 'com.guerir:guerir-repository:1.0'
     compile 'org.postgresql:postgresql:9.4.1208'
    
     compile 'com.google.guava:guava:18.0'
