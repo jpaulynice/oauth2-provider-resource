@@ -19,3 +19,6 @@ VALUES (167, 145);
 
 INSERT INTO ACCOUNTS_ROLES (ACCOUNT_ID, ROLE_ID)
 VALUES (167, 146);
+
+insert into oauth_client_details
+values ('app',null,'secret','read,write','password',null,'ROLE_USER',3600,3600,null,null);

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true">
-    <ResourceLink global="guerirDB" name="guerirDB" type="java.sql.DataSource" />
+    <ResourceLink global="authDB" name="authDB" type="java.sql.DataSource" />
 </Context>

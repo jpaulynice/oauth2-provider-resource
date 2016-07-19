@@ -2,7 +2,7 @@ package com.zikko.auth.service.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.zikko.auth.model.Account;
+import com.guerir.model.Account;
 import com.zikko.auth.repository.entity.AccountEntity;
 
 /**
@@ -23,7 +23,6 @@ public class AccountMapper {
         }
 
         final AccountEntity entity = new AccountEntity();
-        entity.setPassword(dto.getPassword());
         entity.setEmail(dto.getUsername());
         entity.setPhone(dto.getPhone());
 

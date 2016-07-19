@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Path("build")
-@Produces({ MediaType.APPLICATION_JSON })
+@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 public class BuildResource {
     @Value("${application.version}")
     private String version;

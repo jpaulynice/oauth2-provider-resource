@@ -41,7 +41,7 @@ public class SpringDataConfig {
     @Bean
     JndiObjectFactoryBean jndiDataSource() {
         final JndiObjectFactoryBean bean = new JndiObjectFactoryBean();
-        bean.setJndiName("java:comp/env/guerirDB");
+        bean.setJndiName("java:comp/env/authDB");
         bean.setResourceRef(true);
 
         return bean;

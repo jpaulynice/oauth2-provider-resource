@@ -9,6 +9,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.google.common.base.Objects;
+import com.guerir.model.AuditDto;
+import com.guerir.model.Role;
 
 public class Account extends AuditDto implements UserDetails {
     private static final long serialVersionUID = -5611558249370990244L;
@@ -16,6 +18,7 @@ public class Account extends AuditDto implements UserDetails {
     private String password;
     private String phone;
     private boolean enabled;
+
     private final Set<Role> roles = new HashSet<>();
 
     public Account() {
