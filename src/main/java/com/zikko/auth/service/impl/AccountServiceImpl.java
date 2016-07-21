@@ -38,6 +38,11 @@ public class AccountServiceImpl implements AccountService {
     public Account createAccount(final Account account) {
         checkAccount(account);
 
+        final AccountEntity e = repo.findByEmail(account.getUsername());
+        if (e != null) {
+            throw new BadRequestException("This email address already exists.");
+        }
+
         final AccountEntity entity = mapper.toEntity(account);
         entity.setPassword(passwordEncoder.encode(account.getPassword()));
 
