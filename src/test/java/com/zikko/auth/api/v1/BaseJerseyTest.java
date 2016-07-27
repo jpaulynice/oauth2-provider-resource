@@ -6,7 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import com.zikko.auth.Application;
+import com.zikko.auth.api.Application;
 import com.zikko.auth.config.SpringTestConfig;
 
 /**

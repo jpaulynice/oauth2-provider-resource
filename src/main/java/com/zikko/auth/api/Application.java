@@ -1,4 +1,4 @@
-package com.zikko.auth;
+package com.zikko.auth.api;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.web.filter.RequestContextFilter;

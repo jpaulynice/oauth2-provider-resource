@@ -1,4 +1,4 @@
-package com.zikko.auth;
+package com.zikko.auth.api;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
