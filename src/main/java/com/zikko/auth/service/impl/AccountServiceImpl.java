@@ -38,7 +38,7 @@ public class AccountServiceImpl implements AccountService {
     public Account createAccount(final Account account) {
         checkAccount(account);
 
-        final AccountEntity e = repo.findByEmail(account.getUsername());
+        final AccountEntity e = repo.findByEmail(account.getEmail());
         if (e != null) {
             throw new BadRequestException("This email address already exists.");
         }
@@ -59,7 +59,7 @@ public class AccountServiceImpl implements AccountService {
 
         if (account == null) {
             message = "Account object can not be null";
-        } else if ((account.getUsername() == null) || account.getUsername().isEmpty()) {
+        } else if ((account.getEmail() == null) || account.getEmail().isEmpty()) {
             message = "Email is required.";
         } else if ((account.getPassword() == null) || account.getPassword().isEmpty()) {
             message = "Password is required.";

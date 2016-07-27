@@ -1,6 +1,6 @@
 --setup users and roles
 INSERT INTO ACCOUNTS (ACCOUNT_ID, EMAIL, PASSWORD, PHONE, CREATED_BY) VALUES 
-(123, 'jay.paulynice@gmail.com', '$2a$11$w68wnrsllsMIJF8NHslJteEUDmfLfpaMgJpaEHi3Hs/koImLsFLDW', '6174801683', 'admin');
+(123, 'tom@gmail.com', '$2a$11$w68wnrsllsMIJF8NHslJteEUDmfLfpaMgJpaEHi3Hs/koImLsFLDW', '6174801683', 'admin');
 
 INSERT INTO ACCOUNTS (ACCOUNT_ID, EMAIL, PASSWORD, PHONE, CREATED_BY) VALUES 
 (167, 'admin@gmail.com', '$2a$11$w68wnrsllsMIJF8NHslJteEUDmfLfpaMgJpaEHi3Hs/koImLsFLDW', '6174801683', 'admin');

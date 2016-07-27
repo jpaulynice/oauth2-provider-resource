@@ -20,6 +20,6 @@ public class BuildResource {
     @PermitAll
     @GET
     public Response getVersion() {
-        return Response.ok().entity("Running version " + version).build();
+        return Response.ok().entity(version).build();
     }
 }

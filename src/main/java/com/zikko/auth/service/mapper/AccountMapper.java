@@ -23,7 +23,7 @@ public class AccountMapper {
         }
 
         final AccountEntity entity = new AccountEntity();
-        entity.setEmail(dto.getUsername());
+        entity.setEmail(dto.getEmail());
         entity.setPhone(dto.getPhone());
 
         return entity;
