@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
+import com.guerir.exception.NotFoundException;
 import com.guerir.model.Message;
 import com.zikko.auth.api.AppExceptionMapper;
 import com.zikko.auth.service.BaseSpringTest;
@@ -55,5 +56,8 @@ public class AppExceptionMapperTest extends BaseSpringTest {
         final Message m2 = (Message) r.getEntity();
         assertNotNull(m2);
         assertEquals(m2.getError_description(), "HTTP 500 Internal Server Error");
+
+        final Response ex = mapper.toResponse(new NotFoundException("No user found with id=123545"));
+        assertNotNull(ex);
     }
 }
