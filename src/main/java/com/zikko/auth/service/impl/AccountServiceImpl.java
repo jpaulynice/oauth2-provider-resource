@@ -14,6 +14,7 @@ import com.zikko.auth.repository.entity.AccountEntity;
 import com.zikko.auth.repository.entity.RoleEntity;
 import com.zikko.auth.service.AccountService;
 import com.zikko.auth.service.mapper.AccountMapper;
+import com.zikko.auth.service.validation.AccountValidation;
 
 @Service
 @Transactional
@@ -21,22 +22,24 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepository repo;
     private final RoleRepository roleRepo;
     private final AccountMapper mapper;
+    private final AccountValidation validator;
 
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public AccountServiceImpl(final AccountRepository repo, final RoleRepository roleRepo, final AccountMapper mapper,
-            final PasswordEncoder passwordEncoder) {
+            final AccountValidation validator, final PasswordEncoder passwordEncoder) {
         this.repo = repo;
         this.roleRepo = roleRepo;
         this.mapper = mapper;
+        this.validator = validator;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public Account createAccount(final Account account) {
-        checkAccount(account);
+        validator.checkAccount(account);
 
         final AccountEntity e = repo.findByEmail(account.getEmail());
         if (e != null) {
@@ -52,23 +55,5 @@ public class AccountServiceImpl implements AccountService {
         final AccountEntity saved = repo.save(entity);
 
         return mapper.toDto(saved);
-    }
-
-    private void checkAccount(final Account account) {
-        String message = null;
-
-        if (account == null) {
-            message = "Account object can not be null";
-        } else if ((account.getEmail() == null) || account.getEmail().isEmpty()) {
-            message = "Email is required.";
-        } else if ((account.getPassword() == null) || account.getPassword().isEmpty()) {
-            message = "Password is required.";
-        } else if ((account.getPhone() == null) || account.getPhone().isEmpty()) {
-            message = "Phone is required";
-        }
-
-        if (message != null) {
-            throw new BadRequestException(message);
-        }
     }
 }
