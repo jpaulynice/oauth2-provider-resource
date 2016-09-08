@@ -15,10 +15,9 @@ public class AccountResourceTest extends BaseJerseyTest {
     public void testCreate() {
         final Account account = new Account();
         account.setEmail("testing@gmail.com");
-        account.setPhone("(617) 480-1683");
         account.setPassword("testing");
 
-        final Response response = target("accounts/register").request().post((Entity.json(account)), Response.class);
+        final Response response = target("accounts").request().post((Entity.json(account)), Response.class);
         final String m = response.readEntity(String.class);
         assertNotNull(m);
 

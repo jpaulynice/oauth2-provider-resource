@@ -24,7 +24,6 @@ public class AccountMapper {
 
         final AccountEntity entity = new AccountEntity();
         entity.setEmail(dto.getEmail());
-        entity.setPhone(dto.getPhone());
 
         return entity;
     }
@@ -42,7 +41,6 @@ public class AccountMapper {
 
         final Account dto = new Account();
         dto.setEmail(entity.getEmail());
-        dto.setPhone(entity.getPhone());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setUpdatedBy(entity.getUpdatedBy());

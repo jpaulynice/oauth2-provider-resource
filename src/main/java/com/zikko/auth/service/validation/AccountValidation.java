@@ -16,8 +16,6 @@ public class AccountValidation {
             message = "Email is required.";
         } else if ((account.getPassword() == null) || account.getPassword().isEmpty()) {
             message = "Password is required.";
-        } else if ((account.getPhone() == null) || account.getPhone().isEmpty()) {
-            message = "Phone is required";
         }
 
         if (message != null) {

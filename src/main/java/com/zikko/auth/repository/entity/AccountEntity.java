@@ -37,9 +37,6 @@ public class AccountEntity extends AuditEntity {
     @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "PHONE")
-    private String phone;
-
     @Column(name = "ENABLED")
     @Type(type = "yes_no")
     private boolean enabled = true;
@@ -63,14 +60,6 @@ public class AccountEntity extends AuditEntity {
 
     public void setEmail(final String email) {
         this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(final String phone) {
-        this.phone = phone;
     }
 
     public String getPassword() {

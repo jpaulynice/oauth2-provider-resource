@@ -15,7 +15,6 @@ public class AccountServiceTest extends BaseSpringTest {
     public void test() {
         final Account a = new Account();
         a.setEmail("test@gmail.com");
-        a.setPhone("6174801683");
         a.setPassword("abc123");
 
         final Account saved = accountService.createAccount(a);

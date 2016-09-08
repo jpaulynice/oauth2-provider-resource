@@ -28,13 +28,4 @@ public class AccountValidationTest extends BaseSpringTest {
         a.setEmail("test@gmail.com");
         validator.checkAccount(a);
     }
-
-    @Test(expectedExceptions = BadRequestException.class)
-    public void testPhoneNull() {
-        final Account a = new Account();
-        a.setEmail("test@gmail.com");
-        a.setPassword("test");
-        validator.checkAccount(a);
-        validator.checkAccount(a);
-    }
 }
