@@ -13,21 +13,11 @@ import org.springframework.stereotype.Component;
 import com.guerir.exception.AbstractBaseException;
 import com.guerir.model.Message;
 
-/**
- * Mapper class to map exceptions to readable messages
- *
- * @author Jay Paulynice (jay.paulynice@gmail.com)
- */
 @Component
 @Provider
 public class AppExceptionMapper implements ExceptionMapper<RuntimeException> {
     private static final Logger log = LoggerFactory.getLogger(AppExceptionMapper.class);
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.ws.rs.ext.ExceptionMapper#toResponse(java.lang.Throwable)
-     */
     @Override
     public Response toResponse(final RuntimeException e) {
         Message message;
@@ -40,7 +30,7 @@ public class AppExceptionMapper implements ExceptionMapper<RuntimeException> {
             message = genericMessage();
         }
 
-        log.debug("An exception occurred. message={}", message);
+        log.debug("An exception occurred. message={}", message, e);
         return Response.status(message.getStatus()).entity(message).build();
     }
 
