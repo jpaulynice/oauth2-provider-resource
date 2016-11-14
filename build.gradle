@@ -11,27 +11,27 @@ dependencies {
 	compile 'com.medviv:medviv-model:1.0'
     compile 'org.postgresql:postgresql:9.4.1208'
    
-    compile 'com.google.guava:guava:18.0'
-    compile 'org.hibernate:hibernate-entitymanager:4.2.11.Final'
-    compile 'org.hibernate:hibernate-core:4.2.11.Final'       
+    compile 'com.google.guava:guava:19.0'
+    compile 'org.hibernate:hibernate-entitymanager:5.2.4.Final'
+    compile 'org.hibernate:hibernate-core:5.2.4.Final'     
     compile 'org.glassfish.jersey.core:jersey-client:2.23.2'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'    
     
     runtime 'ch.qos.logback:logback-classic:1.1.3'
     compile 'org.slf4j:slf4j-api:1.7.13'   
     
+    compile 'org.springframework.security:spring-security-web:4.1.3.RELEASE'
+    compile 'org.springframework.security:spring-security-config:4.1.3.RELEASE'
     compile 'org.springframework:spring-aspects:4.3.3.RELEASE'
     compile 'org.springframework:spring-context:4.3.3.RELEASE'
     compile 'org.springframework:spring-web:4.3.3.RELEASE'
     compile 'org.springframework:spring-orm:4.3.3.RELEASE'
     compile 'org.springframework:spring-webmvc:4.3.3.RELEASE'
-    compile ('org.springframework.security.oauth:spring-security-oauth2:+'){
+    
+    compile ('org.springframework.security.oauth:spring-security-oauth2:2.0.11.RELEASE'){
         exclude(module: 'spring-webmvc')
     }
-    compile 'org.springframework.security:spring-security-web:4.1.3.RELEASE'
-    compile 'org.springframework.security:spring-security-config:4.1.3.RELEASE'
-    compile 'javax.servlet:javax.servlet-api:3.1.0'
-    
-    compile ('org.springframework.data:spring-data-jpa:1.9.0.RELEASE'){
+    compile ('org.springframework.data:spring-data-jpa:1.10.5.RELEASE'){
         exclude(module: 'spring-aop')
         exclude(module: 'spring-tx')
         exclude(module: 'spring-web')

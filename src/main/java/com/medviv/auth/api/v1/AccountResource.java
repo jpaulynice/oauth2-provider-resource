@@ -19,6 +19,7 @@ import com.medviv.model.Account;
 @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 public class AccountResource {
     private final Logger log = org.slf4j.LoggerFactory.getLogger(getClass());
+
     private final AccountService service;
 
     @Autowired
