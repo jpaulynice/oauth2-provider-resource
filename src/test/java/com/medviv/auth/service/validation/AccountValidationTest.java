@@ -12,20 +12,43 @@ public class AccountValidationTest extends BaseSpringTest {
     private AccountValidation validator;
 
     @Test(expectedExceptions = BadRequestException.class)
-    public void testNull() {
-        validator.checkAccount(null);
+    public void testNewObject() {
         validator.checkAccount(new Account());
     }
 
     @Test(expectedExceptions = BadRequestException.class)
-    public void testEmailNull() {
-        validator.checkAccount(new Account());
+    public void testNull() {
+        validator.checkAccount(null);
     }
 
     @Test(expectedExceptions = BadRequestException.class)
     public void testPasswordNull() {
         final Account a = new Account();
         a.setEmail("test@gmail.com");
+        validator.checkAccount(a);
+    }
+
+    @Test(expectedExceptions = BadRequestException.class)
+    public void testEmailEmpty() {
+        final Account a = new Account();
+        a.setEmail("");
+        validator.checkAccount(a);
+    }
+
+    @Test(expectedExceptions = BadRequestException.class)
+    public void testPwEmpty() {
+        final Account a = new Account();
+        a.setEmail("test@gmail.com");
+        a.setPassword("");
+        validator.checkAccount(a);
+    }
+
+    @Test
+    public void testPwNull() {
+        final Account a = new Account();
+        a.setEmail("test@gmail.com");
+        a.setPassword("password");
+
         validator.checkAccount(a);
     }
 }

@@ -12,14 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.medviv.auth.config.SpringTestConfig;
 
-/**
- * @author Jay Paulynice (jay.paulynice@gmail.com)
- */
 @Transactional
 @ContextConfiguration(classes = SpringTestConfig.class)
 @TestExecutionListeners(listeners = { ServletTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class, WithSecurityContextTestExecutionListener.class })
 public class BaseSpringTest extends AbstractTestNGSpringContextTests {
-    // nothing to see here
+    //
 }

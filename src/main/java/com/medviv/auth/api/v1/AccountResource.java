@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,7 @@ import com.medviv.model.Account;
 @Path("accounts")
 @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 public class AccountResource {
-    private final Logger log = org.slf4j.LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final AccountService service;
 

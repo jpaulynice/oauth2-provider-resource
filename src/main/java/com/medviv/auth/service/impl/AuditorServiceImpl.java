@@ -16,16 +16,19 @@ public class AuditorServiceImpl implements AuditorAware<String> {
 
     @Override
     public String getCurrentAuditor() {
-        final SecurityContext context = SecurityContextHolder.getContext();
-        final Authentication authentication = context.getAuthentication();
-
         String currentUser = "anonymous";
-        if ((authentication != null) && (authentication.getPrincipal() instanceof Account)) {
-            final Account userDetails = (Account) authentication.getPrincipal();
-            currentUser = userDetails.getUsername();
-        }
 
-        log.debug("user from context={}", currentUser);
+        final SecurityContext context = SecurityContextHolder.getContext();
+        if (context != null) {
+            final Authentication authentication = context.getAuthentication();
+
+            if ((authentication != null) && (authentication.getPrincipal() instanceof Account)) {
+                final Account userDetails = (Account) authentication.getPrincipal();
+                currentUser = userDetails.getUsername();
+            }
+
+            log.debug("user from context={}", currentUser);
+        }
 
         return currentUser;
     }

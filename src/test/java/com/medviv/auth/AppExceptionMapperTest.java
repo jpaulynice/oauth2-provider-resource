@@ -14,14 +14,9 @@ import org.testng.annotations.Test;
 
 import com.medviv.auth.api.AppExceptionMapper;
 import com.medviv.auth.service.BaseSpringTest;
-import com.medviv.exception.NotFoundException;
+import com.medviv.exception.ObjectNotFoundException;
 import com.medviv.model.Message;
 
-/**
- * Test class for application exception mapper
- *
- * @author Jay Paulynice (jay.paulynice@gmail.com)
- */
 public class AppExceptionMapperTest extends BaseSpringTest {
     @Autowired
     private AppExceptionMapper mapper;
@@ -57,7 +52,7 @@ public class AppExceptionMapperTest extends BaseSpringTest {
         assertNotNull(m2);
         assertEquals(m2.getError_description(), "HTTP 500 Internal Server Error");
 
-        final Response ex = mapper.toResponse(new NotFoundException("No user found with id=123545"));
+        final Response ex = mapper.toResponse(new ObjectNotFoundException("No user found with id=123545"));
         assertNotNull(ex);
     }
 }

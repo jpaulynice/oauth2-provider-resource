@@ -8,6 +8,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.testng.annotations.Test;
 
 public class MockAuditorServiceTest extends BaseSpringTest {
+
     @Autowired
     private AuditorAware<String> auditService;
 
@@ -17,7 +18,7 @@ public class MockAuditorServiceTest extends BaseSpringTest {
     }
 
     @Test
-    public void testGetCurrentAuditor() {
+    public void testGetCurrentAuditorAnom() {
         assertEquals(auditService.getCurrentAuditor(), "anonymous");
     }
 }

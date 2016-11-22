@@ -1,5 +1,7 @@
 package com.medviv.auth.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ import com.medviv.model.Account;
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
+    private static final Logger log = LoggerFactory.getLogger(AccountServiceImpl.class);
+
     private final AccountRepository repo;
     private final RoleRepository roleRepo;
     private final AccountMapper mapper;
@@ -39,12 +43,10 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public Account createAccount(final Account account) {
-        validator.checkAccount(account);
+        log.debug("create account");
 
-        final AccountEntity e = repo.findByEmail(account.getEmail());
-        if (e != null) {
-            throw new BadRequestException("This email address already exists.");
-        }
+        validator.checkAccount(account);
+        checkAccountExists(account.getEmail());
 
         final AccountEntity entity = mapper.toEntity(account);
         entity.setPassword(passwordEncoder.encode(account.getPassword()));
@@ -55,5 +57,12 @@ public class AccountServiceImpl implements AccountService {
         final AccountEntity saved = repo.save(entity);
 
         return mapper.toDto(saved);
+    }
+
+    private void checkAccountExists(final String email) {
+        final AccountEntity accountEntity = repo.findByEmail(email);
+        if (accountEntity != null) {
+            throw new BadRequestException("This email address exists already.");
+        }
     }
 }

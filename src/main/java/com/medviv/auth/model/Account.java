@@ -14,11 +14,10 @@ import com.medviv.model.Role;
 
 public class Account extends AuditDto implements UserDetails {
     private static final long serialVersionUID = -5611558249370990244L;
+
     private String email;
     private String password;
-    private String phone;
     private boolean enabled;
-
     private final Set<Role> roles = new HashSet<>();
 
     public Account() {
@@ -35,14 +34,6 @@ public class Account extends AuditDto implements UserDetails {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(final String phone) {
-        this.phone = phone;
-    }
-
     /**
      * @return the password
      */
@@ -56,38 +47,6 @@ public class Account extends AuditDto implements UserDetails {
      */
     public void setPassword(final String password) {
         this.password = password;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof Account)) {
-            return false;
-        }
-        final Account other = (Account) obj;
-        return Objects.equal(email, other.email);
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(email);
-    }
-
-    @Override
-    public String toString() {
-        return "Account [email=" + email + ", password=" + password + ", phone=" + phone + "]";
     }
 
     @Override
@@ -124,5 +83,37 @@ public class Account extends AuditDto implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Account)) {
+            return false;
+        }
+        final Account other = (Account) obj;
+        return Objects.equal(email, other.email);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(email);
+    }
+
+    @Override
+    public String toString() {
+        return "Account [email=" + email + ", enabled=" + enabled + ", roles=" + roles + "]";
     }
 }

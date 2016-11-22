@@ -9,11 +9,6 @@ import org.testng.annotations.BeforeClass;
 import com.medviv.auth.api.Application;
 import com.medviv.auth.config.SpringTestConfig;
 
-/**
- * Base test class for all jersey unit tests
- *
- * @author Jay Paulynice (jay.paulynice@gmail.com)
- */
 public abstract class BaseJerseyTest extends JerseyTest {
     /*
      * (non-Javadoc)
