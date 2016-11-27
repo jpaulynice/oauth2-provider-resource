@@ -4,4 +4,6 @@ import com.medviv.model.Account;
 
 public interface AccountService {
     Account createAccount(Account account);
+
+    Account updateAccount(Account account);
 }

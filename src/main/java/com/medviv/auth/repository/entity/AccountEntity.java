@@ -1,7 +1,7 @@
 package com.medviv.auth.repository.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -44,7 +44,7 @@ public class AccountEntity extends AuditEntity {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "ACCOUNTS_ROLES", joinColumns = { @JoinColumn(name = "ACCOUNT_ID") },
             inverseJoinColumns = { @JoinColumn(name = "ROLE_ID") })
-    private final Set<RoleEntity> roles = new HashSet<>();
+    private final List<RoleEntity> roles = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -70,7 +70,7 @@ public class AccountEntity extends AuditEntity {
         this.password = password;
     }
 
-    public Set<RoleEntity> getRoles() {
+    public List<RoleEntity> getRoles() {
         return roles;
     }
 

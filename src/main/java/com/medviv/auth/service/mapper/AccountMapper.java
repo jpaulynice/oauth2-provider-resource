@@ -1,9 +1,15 @@
 package com.medviv.auth.service.mapper;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.medviv.auth.repository.entity.AccountEntity;
+import com.medviv.auth.repository.entity.RoleEntity;
 import com.medviv.model.Account;
+import com.medviv.model.Role;
 
 @Component
 public class AccountMapper {
@@ -13,8 +19,14 @@ public class AccountMapper {
         }
 
         final AccountEntity entity = new AccountEntity();
+
+        entity.setId(dto.getId());
         entity.setEmail(dto.getEmail());
         entity.setEnabled(dto.isEnabled());
+        entity.setCreatedBy(dto.getCreatedBy());
+        entity.setCreatedDate(dto.getCreatedDate());
+        entity.setUpdatedBy(dto.getUpdatedBy());
+        entity.setUpdatedDate(dto.getUpdatedDate());
 
         return entity;
     }
@@ -25,9 +37,34 @@ public class AccountMapper {
         }
 
         final Account dto = new Account();
+
+        dto.setId(entity.getId());
         dto.setEmail(entity.getEmail());
         dto.setEnabled(entity.isEnabled());
+        dto.getRoles().addAll(toRoleEntities(entity.getRoles()));
+
+        dto.setCreatedBy(entity.getCreatedBy());
+        dto.setCreatedDate(entity.getCreatedDate());
+        dto.setUpdatedBy(entity.getUpdatedBy());
+        dto.setUpdatedDate(entity.getUpdatedDate());
 
         return dto;
+    }
+
+    private List<Role> toRoleEntities(final List<RoleEntity> entities) {
+        if ((entities == null) || entities.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        final List<Role> roles = new ArrayList<>();
+        for (final RoleEntity r : entities) {
+            final Role d = new Role();
+            d.setId(r.getId());
+            d.setName(r.getRoleName());
+
+            roles.add(d);
+        }
+
+        return roles;
     }
 }

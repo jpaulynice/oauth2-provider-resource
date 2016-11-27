@@ -40,12 +40,20 @@ public class AccountServiceImpl implements AccountService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.medviv.auth.service.AccountService#createAccount(com.medviv.model.
+     * Account)
+     */
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public Account createAccount(final Account account) {
-        log.debug("create account");
-
         validator.checkAccount(account);
+
+        log.debug("create account.  email={}", account.getEmail());
+
         checkAccountExists(account.getEmail());
 
         final AccountEntity entity = mapper.toEntity(account);
@@ -57,6 +65,40 @@ public class AccountServiceImpl implements AccountService {
         final AccountEntity saved = repo.save(entity);
 
         return mapper.toDto(saved);
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * com.medviv.auth.service.AccountService#updateAccount(com.medviv.model.
+     * Account)
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+    public Account updateAccount(final Account account) {
+        validator.checkAccount(account);
+        final String email = account.getEmail();
+
+        log.debug("update account. email={}", email);
+        final AccountEntity entity = findEntity(email);
+
+        entity.setPassword(passwordEncoder.encode(account.getPassword()));
+        entity.setEnabled(account.isEnabled());
+
+        final AccountEntity updated = repo.save(entity);
+
+        return mapper.toDto(updated);
+    }
+
+    private AccountEntity findEntity(final String email) {
+        final AccountEntity entity = repo.findByEmail(email);
+
+        if (entity == null) {
+            throw new BadRequestException("No account found with email: " + email);
+        }
+
+        return entity;
     }
 
     private void checkAccountExists(final String email) {
