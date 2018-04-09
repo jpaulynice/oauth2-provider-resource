@@ -46,4 +46,3 @@ public abstract class Audit {
                 + ", updatedBy=" + updatedBy + "]";
     }
 }
-

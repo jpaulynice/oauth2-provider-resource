@@ -44,4 +44,3 @@ public class Message {
         return "Message [status=" + status + ", error=" + error + ", description=" + description + "]";
     }
 }
-
