@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.medviv.exception.AbstractBaseException;
-import com.medviv.model.Message;
+import com.medviv.auth.api.dto.Message;
+import com.medviv.auth.api.exception.AbstractBaseException;
 
 @Component
 @Provider

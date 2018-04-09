@@ -3,14 +3,12 @@ package com.medviv.auth.api.v1;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
-
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
-
 import org.testng.annotations.Test;
 
-import com.medviv.model.Account;
-import com.medviv.model.Message;
+import com.medviv.auth.api.dto.Account;
+import com.medviv.auth.api.dto.Message;
 
 public class AccountResourceTest extends BaseJerseyTest {
     @Test
@@ -21,7 +19,7 @@ public class AccountResourceTest extends BaseJerseyTest {
         assertEquals(response.getStatus(), 400);
 
         final Message error = response.readEntity(Message.class);
-        assertEquals(error.getError_description(), "Account object can not be null");
+        assertEquals(error.getDescription(), "Account object can not be null");
         assertEquals(error.getError(), "Account object can not be null");
     }
 
@@ -34,7 +32,7 @@ public class AccountResourceTest extends BaseJerseyTest {
         assertEquals(response.getStatus(), 400);
 
         final Message error = response.readEntity(Message.class);
-        assertEquals(error.getError_description(), "Email is required.");
+        assertEquals(error.getDescription(), "Email is required.");
         assertEquals(error.getError(), "Email is required.");
     }
 
@@ -48,7 +46,7 @@ public class AccountResourceTest extends BaseJerseyTest {
         assertEquals(response.getStatus(), 400);
 
         final Message error = response.readEntity(Message.class);
-        assertEquals(error.getError_description(), "Password is required.");
+        assertEquals(error.getDescription(), "Password is required.");
         assertEquals(error.getError(), "Password is required.");
     }
 

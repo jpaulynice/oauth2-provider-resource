@@ -5,12 +5,12 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
-import com.medviv.exception.BadRequestException;
-import com.medviv.model.Account;
+import com.medviv.auth.api.dto.Account;
+import com.medviv.auth.api.exception.BadRequestException;
+
 
 public class AccountServiceTest extends BaseSpringTest {
     @Autowired

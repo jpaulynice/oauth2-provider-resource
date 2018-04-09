@@ -2,8 +2,8 @@ package com.medviv.auth.service.validation;
 
 import org.springframework.stereotype.Component;
 
-import com.medviv.exception.BadRequestException;
-import com.medviv.model.Account;
+import com.medviv.auth.api.dto.Account;
+import com.medviv.auth.api.exception.BadRequestException;
 
 @Component
 public class AccountValidation {

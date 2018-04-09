@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.medviv.auth;
 
 import static org.testng.Assert.assertEquals;
@@ -13,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
 import com.medviv.auth.api.AppExceptionMapper;
+import com.medviv.auth.api.dto.Message;
 import com.medviv.auth.service.BaseSpringTest;
-import com.medviv.exception.ObjectNotFoundException;
-import com.medviv.model.Message;
 
 public class AppExceptionMapperTest extends BaseSpringTest {
     @Autowired
@@ -41,7 +37,7 @@ public class AppExceptionMapperTest extends BaseSpringTest {
 
         final Message m = (Message) r.getEntity();
         assertNotNull(m);
-        assertEquals(m.getError_description(), "Internal server error");
+        assertEquals(m.getDescription(), "Internal server error");
 
         r = mapper.toResponse(new WebApplicationException());
 
@@ -50,9 +46,6 @@ public class AppExceptionMapperTest extends BaseSpringTest {
 
         final Message m2 = (Message) r.getEntity();
         assertNotNull(m2);
-        assertEquals(m2.getError_description(), "HTTP 500 Internal Server Error");
-
-        final Response ex = mapper.toResponse(new ObjectNotFoundException("No user found with id=123545"));
-        assertNotNull(ex);
+        assertEquals(m2.getDescription(), "HTTP 500 Internal Server Error");
     }
 }

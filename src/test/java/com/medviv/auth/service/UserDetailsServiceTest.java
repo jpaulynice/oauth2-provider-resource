@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.testng.annotations.Test;
 
-import com.medviv.auth.model.Account;
+import com.medviv.auth.model.UserAccount;
 
 public class UserDetailsServiceTest extends BaseSpringTest {
     @Autowired
@@ -21,13 +21,13 @@ public class UserDetailsServiceTest extends BaseSpringTest {
 
     @Test
     public void testLoadUser() {
-        final Account account = (Account) service.loadUserByUsername("tom@gmail.com");
+        final UserAccount account = (UserAccount) service.loadUserByUsername("tom@gmail.com");
         assertNotNull(account);
     }
 
     @Test(expectedExceptions = UsernameNotFoundException.class)
     public void testLoadUserException() {
-        final Account account = (Account) service.loadUserByUsername("xywww@gmail.com");
+        final UserAccount account = (UserAccount) service.loadUserByUsername("xywww@gmail.com");
         assertNull(account);
     }
 }

@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.medviv.auth.api.dto.Account;
+import com.medviv.auth.api.dto.Role;
 import com.medviv.auth.repository.entity.AccountEntity;
 import com.medviv.auth.repository.entity.RoleEntity;
-import com.medviv.model.Account;
-import com.medviv.model.Role;
 
 @Component
 public class AccountMapper {

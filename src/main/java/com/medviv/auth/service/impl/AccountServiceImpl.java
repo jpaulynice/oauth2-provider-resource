@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.medviv.auth.api.dto.Account;
+import com.medviv.auth.api.exception.BadRequestException;
 import com.medviv.auth.repository.AccountRepository;
 import com.medviv.auth.repository.RoleRepository;
 import com.medviv.auth.repository.entity.AccountEntity;
@@ -15,8 +17,6 @@ import com.medviv.auth.repository.entity.RoleEntity;
 import com.medviv.auth.service.AccountService;
 import com.medviv.auth.service.mapper.AccountMapper;
 import com.medviv.auth.service.validation.AccountValidation;
-import com.medviv.exception.BadRequestException;
-import com.medviv.model.Account;
 
 @Service
 @Transactional

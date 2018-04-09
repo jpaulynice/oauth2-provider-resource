@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.medviv.auth.model.Account;
+import com.medviv.auth.model.UserAccount;
 import com.medviv.auth.repository.AccountRepository;
 import com.medviv.auth.repository.entity.AccountEntity;
 
@@ -36,6 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Invalid email and/or password.");
         }
 
-        return new Account(account.getEmail(), account.getPassword(), account.isEnabled());
+        return new UserAccount(account.getEmail(), account.getPassword(), account.isEnabled());
     }
 }

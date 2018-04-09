@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.medviv.auth.model.Account;
+import com.medviv.auth.model.UserAccount;
 
 @Service
 public class AuditorServiceImpl implements AuditorAware<String> {
@@ -22,8 +22,8 @@ public class AuditorServiceImpl implements AuditorAware<String> {
         if (context != null) {
             final Authentication authentication = context.getAuthentication();
 
-            if ((authentication != null) && (authentication.getPrincipal() instanceof Account)) {
-                final Account userDetails = (Account) authentication.getPrincipal();
+            if ((authentication != null) && (authentication.getPrincipal() instanceof UserAccount)) {
+                final UserAccount userDetails = (UserAccount) authentication.getPrincipal();
                 currentUser = userDetails.getUsername();
             }
 

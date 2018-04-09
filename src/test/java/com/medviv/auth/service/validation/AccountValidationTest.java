@@ -3,9 +3,9 @@ package com.medviv.auth.service.validation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
+import com.medviv.auth.api.dto.Account;
+import com.medviv.auth.api.exception.BadRequestException;
 import com.medviv.auth.service.BaseSpringTest;
-import com.medviv.exception.BadRequestException;
-import com.medviv.model.Account;
 
 public class AccountValidationTest extends BaseSpringTest {
     @Autowired

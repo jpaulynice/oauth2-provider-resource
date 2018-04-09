@@ -6,9 +6,9 @@ import static org.testng.Assert.assertNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
+import com.medviv.auth.api.dto.Account;
 import com.medviv.auth.repository.entity.AccountEntity;
 import com.medviv.auth.service.BaseSpringTest;
-import com.medviv.model.Account;
 
 public class AccountMapperTest extends BaseSpringTest {
     @Autowired

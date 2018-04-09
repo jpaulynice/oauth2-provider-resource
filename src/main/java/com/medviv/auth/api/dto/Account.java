@@ -1,32 +1,40 @@
-package com.medviv.auth.model;
+package com.medviv.auth.api.dto;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.common.base.Objects;
-import com.medviv.model.AuditDto;
-import com.medviv.model.Role;
 
-public class Account extends AuditDto implements UserDetails {
-    private static final long serialVersionUID = -5611558249370990244L;
-
+public class Account extends Audit {
+    private Long id;
     private String email;
     private String password;
     private boolean enabled;
-    private final Set<Role> roles = new HashSet<>();
+    private final List<Role> roles = new ArrayList<>();
 
     public Account() {
-        //
+        this.enabled = true;
     }
 
     public Account(final String email, final String password, final boolean enabled) {
         this.email = email;
         this.password = password;
+        this.enabled = enabled;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -37,7 +45,6 @@ public class Account extends AuditDto implements UserDetails {
     /**
      * @return the password
      */
-    @Override
     public String getPassword() {
         return password;
     }
@@ -49,38 +56,6 @@ public class Account extends AuditDto implements UserDetails {
         this.password = password;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        final Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-
-        for (final Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-
-        return authorities;
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
     public boolean isEnabled() {
         return enabled;
     }
@@ -114,6 +89,10 @@ public class Account extends AuditDto implements UserDetails {
 
     @Override
     public String toString() {
-        return "Account [email=" + email + ", enabled=" + enabled + ", roles=" + roles + "]";
+        return "Account [email=" + email + ", enabled=" + enabled + "]";
+    }
+
+    public List<Role> getRoles() {
+        return roles;
     }
 }

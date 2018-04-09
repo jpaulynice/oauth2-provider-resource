@@ -19,8 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
+import com.medviv.auth.api.dto.Account;
 import com.medviv.auth.service.AccountService;
-import com.medviv.model.Account;
 
 @Component
 @Path(ACCOUNTS_URL)
