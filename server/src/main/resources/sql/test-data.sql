@@ -1,0 +1,24 @@
+--setup users and roles
+INSERT INTO ACCOUNTS (ACCOUNT_ID, EMAIL, PASSWORD, CREATED_BY) VALUES 
+(123, 'tom@gmail.com', '$2a$11$w68wnrsllsMIJF8NHslJteEUDmfLfpaMgJpaEHi3Hs/koImLsFLDW', 'admin');
+
+INSERT INTO ACCOUNTS (ACCOUNT_ID, EMAIL, PASSWORD, CREATED_BY) VALUES 
+(167, 'admin@gmail.com', '$2a$11$w68wnrsllsMIJF8NHslJteEUDmfLfpaMgJpaEHi3Hs/koImLsFLDW', 'admin');
+
+INSERT INTO ROLES (ROLE_ID, ROLE_NAME, CREATED_BY)
+VALUES (145, 'ROLE_USER', 'admin');
+
+INSERT INTO ROLES (ROLE_ID, ROLE_NAME, CREATED_BY)
+VALUES (146, 'ROLE_ADMIN', 'admin');
+
+INSERT INTO ACCOUNTS_ROLES (ACCOUNT_ID, ROLE_ID)
+VALUES (123, 145);
+
+INSERT INTO ACCOUNTS_ROLES (ACCOUNT_ID, ROLE_ID)
+VALUES (167, 145);
+
+INSERT INTO ACCOUNTS_ROLES (ACCOUNT_ID, ROLE_ID)
+VALUES (167, 146);
+
+insert into oauth_client_details
+values ('app',null,'secret','read,write','password',null,'ROLE_USER',3600,3600,null,null);
