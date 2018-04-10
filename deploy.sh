@@ -1,2 +1,3 @@
 #!/bin/bash
-cp -r build/libs/medviv-auth.war /usr/local/tomcat/webapps/oauth2.war
+cp -r medviv-api/build/libs/medviv-api-1.0.war /usr/local/tomcat/webapps/medviv.war
+#cp -r medviv-api/build/libs/medviv-api-1.0.war /usr/local/tomcat/webapps/medviv.war

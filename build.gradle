@@ -1,54 +1,89 @@
-apply plugin: 'java'
-apply plugin: 'war'
+allprojects  {
+  apply plugin: 'com.github.kt3k.coveralls'
+  apply plugin: 'java'
+  apply plugin: 'jacoco'
+  apply plugin: 'maven'
+  
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
 
-repositories {
+  group = 'com.medviv'
+  version = '1.0'
+  
+  repositories {
     mavenLocal()
     mavenCentral()
     jcenter()
+  }
 }
 
-dependencies {
-    compile 'org.postgresql:postgresql:9.4.1208'
-   
-    compile 'com.google.guava:guava:19.0'
-    compile 'org.hibernate:hibernate-entitymanager:5.2.4.Final'
-    compile 'org.hibernate:hibernate-core:5.2.4.Final'     
-    compile 'org.glassfish.jersey.core:jersey-client:2.23.2'
-    compile 'javax.servlet:javax.servlet-api:3.1.0'    
-    
-    runtime 'ch.qos.logback:logback-classic:1.1.3'
-    compile 'org.slf4j:slf4j-api:1.7.13'   
-    
-    compile 'org.springframework.security:spring-security-web:4.1.3.RELEASE'
-    compile 'org.springframework.security:spring-security-config:4.1.3.RELEASE'
-    compile 'org.springframework:spring-aspects:4.3.3.RELEASE'
-    compile 'org.springframework:spring-context:4.3.3.RELEASE'
-    compile 'org.springframework:spring-web:4.3.3.RELEASE'
-    compile 'org.springframework:spring-orm:4.3.3.RELEASE'
-    compile 'org.springframework:spring-webmvc:4.3.3.RELEASE'
-    
-    compile ('org.springframework.security.oauth:spring-security-oauth2:2.0.11.RELEASE') {
-        exclude(module: 'spring-webmvc')
-    }
-    compile ('org.springframework.data:spring-data-jpa:1.10.5.RELEASE') {
-        exclude(module: 'spring-aop')
-        exclude(module: 'spring-tx')
-        exclude(module: 'spring-web')
-    }
-    compile ('org.glassfish.jersey.ext:jersey-spring3:2.23.2') {
-        exclude(module: 'spring-aop')
-        exclude(module: 'spring-tx')
-        exclude(module: 'spring-web')
-    }
-    compile('org.glassfish.jersey.media:jersey-media-json-jackson:2.23.2') {
-        exclude group: 'org.codehaus.jackson'
-    }
-    
-    testCompile 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.23.2'
-    testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-grizzly2:2.23.2'
-    testCompile 'org.glassfish.jersey.containers:jersey-container-servlet:2.23.2'
-    testCompile 'org.glassfish.jersey.test-framework:jersey-test-framework-core:2.23.2'
-    testCompile 'org.springframework.security:spring-security-test:4.1.3.RELEASE'
-    testCompile 'org.hsqldb:hsqldb:2.3.3'
-    testCompile 'org.testng:testng:6.9.13.6'  
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.4.0'
+  }
+}
+
+subprojects {  
+  def coverageSourceDirs = [
+    'src/main/java'
+  ]
+
+  jacocoTestReport {
+    additionalSourceDirs = files(sourceSets.main.allSource.srcDirs)
+    sourceDirectories = files(sourceSets.main.allSource.srcDirs)
+    classDirectories =  files(sourceSets.main.output)
+        
+    reports {
+        csv.enabled false
+        html{
+          enabled true
+          destination "${buildDir}/reports/jacoco"
+        }
+        xml.enabled false
+     }
+  }
+  
+  test {
+    useTestNG()
+  }
+ 
+  test.finalizedBy(project.tasks.jacocoTestReport)
+}
+
+task testReport(type: TestReport, group: 'Build') {
+  destinationDir = file("${buildDir}/reports/allTests")
+}
+
+task jacocoRootReport(type: JacocoReport, group: 'Coverage reports') {
+  dependsOn = subprojects.test
+
+  additionalSourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs)
+  sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
+  classDirectories = files(subprojects.sourceSets.main.output)
+  executionData = files(subprojects.jacocoTestReport.executionData)
+
+  reports {
+    html.enabled = true
+    xml.enabled = true
+  }
+
+  doFirst {
+    executionData = files(executionData.findAll { it.exists() })
+  }
+}
+
+coveralls {
+  sourceDirs = subprojects.sourceSets.main.allSource.srcDirs.flatten()
+  jacocoReportPath = "${buildDir}/reports/jacoco/jacocoRootReport/jacocoRootReport.xml"
+}
+
+tasks.coveralls {
+  dependsOn jacocoRootReport
+  onlyIf { System.env.'CI' }
 }
