@@ -1,3 +1,3 @@
 #!/bin/bash
-cp -r medviv-api/build/libs/medviv-api-1.0.war /usr/local/tomcat/webapps/medviv.war
-#cp -r medviv-api/build/libs/medviv-api-1.0.war /usr/local/tomcat/webapps/medviv.war
+cp -r provider/build/libs/provider-1.0.war /usr/local/tomcat/webapps/provider.war
+cp -r resource/build/libs/resource-1.0.war /usr/local/tomcat/webapps/resource.war
