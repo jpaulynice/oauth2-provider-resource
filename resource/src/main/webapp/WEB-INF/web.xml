@@ -13,7 +13,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>com.medviv.config.SpringConfig</param-value>
+		<param-value>com.medviv.rest.config.SpringConfig</param-value>
 	</context-param>
 
 	<listener>
@@ -34,16 +34,6 @@
 		<servlet-name>REST</servlet-name>
 		<url-pattern>/api/v1/*</url-pattern>
 	</servlet-mapping>
-	
-	<filter>
-        <filter-name>OpenEntityManagerInViewFilter</filter-name>
-        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>OpenEntityManagerInViewFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
     
     <filter>
 		<filter-name>springSecurityFilterChain</filter-name>

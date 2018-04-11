@@ -1,1 +1,1 @@
-include "server", "provider"
+include "resource", "provider"
