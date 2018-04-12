@@ -7,5 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "com.medviv.auth.*" })
+@ComponentScan({ 
+	"com.medviv.auth.*" 
+	})
 public class SpringWebConfig extends WebMvcConfigurerAdapter {}

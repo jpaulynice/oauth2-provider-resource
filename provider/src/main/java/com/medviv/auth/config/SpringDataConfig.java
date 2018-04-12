@@ -20,7 +20,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableJpaAuditing
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.medviv.auth.repository" })
+@EnableJpaRepositories(
+		basePackages = { "com.medviv.auth.repository" }
+		)
 public class SpringDataConfig {
 
     @Bean
