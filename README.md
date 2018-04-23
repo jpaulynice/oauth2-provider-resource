@@ -8,12 +8,15 @@ The provider database stores user credentials only: username, password, and role
 To start:
 
 1. Install docker and docker-compose if not already installed:
+
 ```brew install docker && brew install docker-compose```
 
 2. Build application:
+
 ```./gradlew clean build```
 
-3. Run: 
+3. Run:
+
 ```docker-compose up```
 
 The protected resource:
@@ -48,7 +51,7 @@ Response:
 
 On the other hand the [BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/provider/src/main/java/com/medviv/auth/api/v1/BuildResource.java) in the provider is NOT protected:
 
-Example with no oauth2 token:
+Example:
 ```curl -XGET http://localhost:8080/provider/api/v1/build```
 
 Response:
