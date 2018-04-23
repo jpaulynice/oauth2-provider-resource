@@ -23,25 +23,12 @@ The protected resource:
 
 [BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/resource/src/main/java/com/medviv/rest/v1/BuildResource.java): 
 
-```
-@Component
-@Path("build")
-@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-public class BuildResource {
-    @Value("${application.version}")
-    private String version;
-
-    @GET
-    public Response getVersion() {
-        return Response.ok().entity(version).build();
-    }
-}
-```
-
 Example with no oauth2 token:
+
 ```curl -XGET http://localhost:8080/resource/api/v1/build```
 
 Response:
+
 ```
 {
     "error": "unauthorized",
@@ -52,9 +39,11 @@ Response:
 On the other hand the [BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/provider/src/main/java/com/medviv/auth/api/v1/BuildResource.java) in the provider is NOT protected:
 
 Example:
+
 ```curl -XGET http://localhost:8080/provider/api/v1/build```
 
 Response:
+
 ```
 1.0.0-SNAPSHOT
 ```
