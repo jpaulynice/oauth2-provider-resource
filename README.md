@@ -26,7 +26,7 @@ Authentication Provider API:
 
 Resource API: 
 
-```http://localhost:8080/resource/api/v1/build
+```http://localhost:8080/resource/api/v1/build```
 
 The protected resource:
 
