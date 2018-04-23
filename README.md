@@ -7,26 +7,16 @@ The provider database stores user credentials only: username, password, and role
 
 To start:
 
-1. Install docker and docker-compose if not already installed:
+1. Install docker and docker-compose if not already installed: ```brew install docker && brew install docker-compose```
 
-```brew install docker && brew install docker-compose```
+2. Build application: ```./gradlew clean build```
 
-2. Build application:
-
-```./gradlew clean build```
-
-3. Run:
-
-```docker-compose up```
+3. Run: ```docker-compose up```
 
 The 2 APIs should be successfully deployed and available at:
-Authentication Provider API: 
+Authentication Provider API: ```http://localhost:8080/provider/api/v1/build```
 
-```http://localhost:8080/provider/api/v1/build```
-
-Resource API: 
-
-```http://localhost:8080/resource/api/v1/build```
+Resource API: ```http://localhost:8080/resource/api/v1/build```
 
 The protected resource:
 
