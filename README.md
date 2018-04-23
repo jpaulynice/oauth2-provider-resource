@@ -19,6 +19,15 @@ To start:
 
 ```docker-compose up```
 
+The 2 APIs should be successfully deployed and available at:
+Authentication Provider API: 
+
+```http://localhost:8080/provider/api/v1/build```
+
+Resource API: 
+
+```http://localhost:8080/resource/api/v1/build
+
 The protected resource:
 
 [BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/resource/src/main/java/com/medviv/rest/v1/BuildResource.java): 
