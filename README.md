@@ -18,7 +18,7 @@ To start:
 
 The protected resource:
 
-[BuildResource] (https://github.com/julesbond007/oauth2-provider-resource/blob/master/resource/src/main/java/com/medviv/rest/v1/BuildResource.java): 
+[BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/resource/src/main/java/com/medviv/rest/v1/BuildResource.java): 
 
 ```
 @Component
