@@ -5,25 +5,23 @@ In this example, the resource and provider are completely isolated and use diffe
 
 The provider database stores user credentials only: username, password, and roles. As far as the resource is concerned, a valid token and role is all it needs to respond to requests from a client application.
 
-To start:
+Setup
+-----
 
 1. Install docker and docker-compose if not already installed: ```brew install docker && brew install docker-compose```
-
 2. Build application: ```./gradlew clean build```
-
 3. Run: ```docker-compose up```
 
 The 2 APIs should be successfully deployed and available at:
 
-Authentication Provider API: ```http://localhost:8080/provider/api/v1/build```
+Authentication Provider API: ```http://localhost:8080/provider/api/v1/*```
 
-Resource API: ```http://localhost:8080/resource/api/v1/build```
+Resource API: ```http://localhost:8080/resource/api/v1/*```
 
-The protected resource:
+Example
+-----
 
-[BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/resource/src/main/java/com/medviv/rest/v1/BuildResource.java): 
-
-Example with no oauth2 token:
+No oauth2 token:
 
 ```curl -XGET http://localhost:8080/resource/api/v1/build```
 
@@ -36,7 +34,7 @@ Response:
 }
 ```
 
-On the other hand the [BuildResource](https://github.com/julesbond007/oauth2-provider-resource/blob/master/provider/src/main/java/com/medviv/auth/api/v1/BuildResource.java) in the provider is NOT protected:
+On the other hand the build version of the provider is unprotected:
 
 Example:
 
