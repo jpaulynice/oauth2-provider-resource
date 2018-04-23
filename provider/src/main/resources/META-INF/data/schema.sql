@@ -1,3 +1,8 @@
+--drop database oauth2_db;
+--create database oauth2_db;
+--use oauth2_db;
+
+
 CREATE SEQUENCE ACCOUNTS_ID_KEY_SEQ START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE ROLES_ID_KEY_SEQ START WITH 1 INCREMENT BY 1;
 

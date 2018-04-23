@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.medviv.auth.api.dto.Account;
 import com.medviv.auth.service.AccountService;
 
+
 @Component
 @Path(ACCOUNTS_URL)
 @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })

@@ -32,7 +32,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>REST</servlet-name>
-		<url-pattern>/auth/*</url-pattern>
+		<url-pattern>/api/v1/*</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

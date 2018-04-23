@@ -16,7 +16,7 @@ import com.medviv.auth.config.SpringSecurityConfig;
 @ComponentScan(basePackages = { "com.medviv.auth.*" },
         excludeFilters = @Filter(type = FilterType.REGEX, pattern = "com.medviv.auth.config.*"))
 @Import({ SpringDataTestConfig.class, SpringSecurityConfig.class, SpringOauth2Config.class })
-@PropertySource("classpath:props/dev.properties")
+@PropertySource("classpath:META-INF/props/dev.properties")
 public class SpringTestConfig {
     @Bean
     static PropertySourcesPlaceholderConfigurer propertyConfig() {

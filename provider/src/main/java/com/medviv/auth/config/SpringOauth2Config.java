@@ -5,7 +5,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -22,14 +21,14 @@ public class SpringOauth2Config extends AuthorizationServerConfigurerAdapter {
     private static final String USER_ROLE = "hasRole('ROLE_USER')";
 
     @Autowired
-    private JndiObjectFactoryBean factory;
+    private DataSource dataSource;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.jdbc((DataSource) factory.getObject());
+        clients.jdbc(dataSource);
     }
 
     @Bean
@@ -43,7 +42,7 @@ public class SpringOauth2Config extends AuthorizationServerConfigurerAdapter {
 
     @Bean
     public TokenStore tokenStore() {
-        return new JdbcTokenStore((DataSource) factory.getObject());
+        return new JdbcTokenStore(dataSource);
     }
 
     @Override

@@ -22,7 +22,10 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 	SpringWebConfig.class 
 	})
 
-@PropertySource("classpath:props/dev.properties")
+@PropertySource({
+	"classpath:META-INF/props/dev.properties", 
+	"classpath:META-INF/props/db.properties"
+	})
 public class SpringConfig {
     @Bean
     static PropertySourcesPlaceholderConfigurer propertyConfig() {

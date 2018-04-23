@@ -1,0 +1,43 @@
+version: '2'
+services:
+  db:
+    container_name: oauth2-db
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_DB=oauth2_db
+      - POSTGRES_USER=root  
+      - POSTGRES_ROOT_PASSWORD=
+    ports:
+      - '5432:5432'
+
+    networks:
+      vpcbr:
+        ipv4_address: 10.6.0.3
+
+  oauth2:
+    container_name: oauth2-tomcat
+    environment:
+      - TOMCAT_USERNAME=root
+      - TOMCAT_PASSWORD=password
+    volumes:
+      - "./tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml"
+      - "./provider/build/libs/provider-1.0.war:/usr/local/tomcat/webapps/provider.war"
+      - "./resource/build/libs/resource-1.0.war:/usr/local/tomcat/webapps/resource.war"
+    image: tomcat:latest
+    ports:
+     - "8080:8080"
+     - "8009:8009"
+    networks:
+      vpcbr:
+        ipv4_address: 10.6.0.4
+    depends_on:
+     - db
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.6.0.0/16
+         gateway: 10.6.0.1
