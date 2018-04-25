@@ -19,7 +19,7 @@ Authentication Provider API: ```http://localhost:8080/provider/api/v1/*```
 Resource API: ```http://localhost:8080/resource/api/v1/*```
 
 Example
------
+-------
 
 No oauth2 token:
 
@@ -47,17 +47,23 @@ Response:
 ```
 
 Access protected resource:
+--------------------------
+
 1. Create a user
 
 ```POST http://localhost:8080/provider/api/v1/accounts```
+
 Body:
+
 ```
 {
 	"email": "jay@gmail.com",
 	"password":"abc123"
 }
 ```
+
 Response:
+
 ```
 {
     "id": 1,
