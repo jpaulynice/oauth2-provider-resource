@@ -46,6 +46,30 @@ Response:
 1.0.0-SNAPSHOT
 ```
 
+Access protected resource:
+1. Create a user
+
+```POST http://localhost:8080/provider/api/v1/accounts```
+Body:
+```
+{
+	"email": "jay@gmail.com",
+	"password":"abc123"
+}
+```
+Response:
+```
+{
+    "id": 1,
+    "email": "jay@gmail.com",
+    "enabled": true,
+    "roles": [
+        {
+            "name": "ROLE_USER"
+        }
+    ]
+}
+```
 
 
 
