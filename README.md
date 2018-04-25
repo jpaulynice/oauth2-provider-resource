@@ -78,6 +78,7 @@ Response:
 ```
 
 2. Obtain a token from the provider:
+
 ```curl -XGET http://localhost:8080/provider/oauth/token?username=jay@gmail.com&password=abc123&grant_type=password&client_id=app&client_secret=secret```
 
 
