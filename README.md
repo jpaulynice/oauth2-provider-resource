@@ -14,7 +14,7 @@ Setup
 
 The 2 APIs should be successfully deployed and available at:
 
-Authentication Provider API: ```http://localhost:8080/provider/api/v1/*```
+Provider API: ```http://localhost:8080/provider/api/v1/*```
 
 Resource API: ```http://localhost:8080/resource/api/v1/*```
 
