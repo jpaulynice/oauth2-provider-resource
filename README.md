@@ -81,11 +81,11 @@ Response:
 
 ```curl -XGET http://localhost:8080/provider/oauth/token?username=jay@gmail.com&password=abc123&grant_type=password&client_id=app&client_secret=secret```
 
-Once we have a token, we can access the protected resource by passing the token in an Authorization header:
+3. Once we have a token, we can access the protected resource by passing the token in an Authorization header:
 
 ```
 curl -XGET http://localhost:8080/resource/api/v1/build \
--H "Authorization: Bearer token"
+-H "Authorization: Bearer token-from-provider"
 ```
 
 --more details to come
